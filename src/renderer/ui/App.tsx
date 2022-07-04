@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react"
 import { getDate } from "../../common/getDate"
-
+import { AppBody } from "./components/AppBody/AppBody"
 import styles from "./App.module.scss"
-import logo from "../public/logo192.png"
+import ipcRenderer from "electron"
 
 export const App: React.FC = () => {
+
+  
+
 
   const [date, setDate] = useState(getDate())
 
@@ -14,13 +17,11 @@ export const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
-      <img
-        src={logo}
-        alt="React logo"
-      />
-      <h1>Electron React Typescript</h1>
-      <p>Code changes will reload the app automatically.</p>
-      <pre>{date}</pre>
+      <h2 className={styles.h2}>Task Manager</h2>
+      <div>
+      <AppBody></AppBody>
+        
+      </div>
     </div>
   )
 }
