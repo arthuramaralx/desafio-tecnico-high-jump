@@ -11,7 +11,8 @@
 .app {
   padding: 3rem 10rem;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   color: white;
   background: rgb(250,216,212);
 background: linear-gradient(90deg, rgba(250,216,212,1) 0%, rgba(255,178,193,1) 57%, rgba(250,216,212,1) 80%);
@@ -27,6 +28,8 @@ background: linear-gradient(90deg, rgba(250,216,212,1) 0%, rgba(255,178,193,1) 5
   }
   h2{
     margin: 0;
-    color: rgb(63, 59, 59)
+    color: rgb(63, 59, 59);
+    font-weight: 700;
+    padding-bottom: 10px;
   }
 }

@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@types/mongoose": "^5.11.97",
+    "electron-default-menu": "^1.0.2",
     "electron-is-dev": "^2.0.0",
     "mongod": "^2.0.0",
     "mongodb": "^4.7.0",

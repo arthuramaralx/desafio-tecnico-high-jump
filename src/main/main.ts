@@ -1,11 +1,10 @@
-import { app, BrowserWindow, ipcMain } from "electron"
+import {app, BrowserWindow, ipcMain } from "electron"
 import isDev from "electron-is-dev"
 import path from "path"
 import url from "url"
-
 import Task from "../models/task"
-
 require("../../database")
+
 
 const productionUrl = path.resolve(__dirname, "../renderer/index.html")
 
@@ -21,7 +20,7 @@ async function run() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    autoHideMenuBar: true,
+    autoHideMenuBar: false,
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true
@@ -46,5 +45,9 @@ ipcMain.on('new-task', async (e, args)=> {
 ipcMain.on('get-tasks', async (e, args)=> {
   const tasks = await Task.find();
   e.reply('get-tasks', JSON.stringify(tasks))
+})
+ipcMain.on('delete-task', async (e, args) =>{
+  const taskDeleted = await Task.findByIdAndDelete(args);
+  e.reply('delete-task-sucess', JSON.stringify(taskDeleted));
 })
 app.whenReady().then(run)

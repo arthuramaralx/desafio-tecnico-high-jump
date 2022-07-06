@@ -2,34 +2,73 @@ import React, { useEffect, useState } from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import styles from "./AppBody.module.scss"
 import { ipcRenderer } from "electron"
+import { TaskCard } from "../TaskCard/TaskCard"
 
 
+type Inputs = {
+    taskName: string,
+    taskDescription: string
+};
+
+
+interface TaskListProps extends Inputs {
+    _id: string;
+};
 
 export const AppBody: React.FC = () => {
 
- 
 
-    type Inputs = {
-        taskName: string,
-        taskDescription: string
-    };
+    const [taskList, setTaskList] = useState<TaskListProps[]>([])
+
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => {
+    const onSubmit: SubmitHandler<Inputs>  = data => {
         ipcRenderer.send('new-task', data)
     };
-    ipcRenderer.on('new-task-created', async (e, args) => {
-        const newTask = JSON.parse(args);
-    })
-    ipcRenderer.send('get-tasks');
+
+
+    useEffect(() => {
+
+
+      
+        ipcRenderer.send('get-tasks');
+
+        ipcRenderer.on('get-tasks', async (e, args) => {
+            const tasklist = await JSON.parse(args)
+            setTaskList(tasklist)
+   
+        });
+   
+    }, [])
+
+
+    useEffect(() => {
+
+
+     
+        ipcRenderer.on('new-task-created', async (e, args) => {
+            const newTask = await JSON.parse(args);
+          
+            setTaskList([...taskList, newTask])
+            
+        })
+   
+    }, [taskList])
+
+
+        ipcRenderer.on('delete-task-sucess',async (e,args) => {
+            // console.log(taskList)
+            const deletedTask = JSON.parse(args);
+            const newTaskList =  taskList.filter(item =>{
+                return item._id !== deletedTask._id
+            })
+            // console.log(newTaskList)
+            setTaskList(newTaskList)
+        })
 
 
 
-    ipcRenderer.on('get-tasks', async (e, args) => {
-        const tasklist = JSON.parse(args)
-        console.log(tasklist)
-    
-        
-    });
+
 
 
     return (
@@ -46,6 +85,15 @@ export const AppBody: React.FC = () => {
             </>
             <div>
                 <ul id="taskList">
+
+                    <>
+                        {taskList.map((task, i) => {
+                          
+                             return  <TaskCard taskDescription={task.taskDescription} key={i} taskName={task.taskName} id={task._id}></TaskCard>
+                            
+                        })
+                        }
+                    </>
 
                 </ul>
             </div>

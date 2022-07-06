@@ -1,4 +1,23 @@
 .TaskCard {
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    width: 300px;
+    margin: 10px auto;
+    background: rgb(138, 118, 118);
+    padding: 10px;
+    border-radius: 10px;
     
+}
+.TaskCard div {
+    font-size: 17px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+.TaskCard button {
+    padding: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
 }

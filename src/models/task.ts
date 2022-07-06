@@ -15,20 +15,3 @@ const userSchema = new Schema<ITask>({
 
 const Task = mongoose.model<ITask>('Task', userSchema);
 export default Task;
-
-//   const Task = model<ITask>('Task', userSchema);
-
-//   run().catch(err => console.log(err));
-
-//   async function run() {
-//     // 4. Connect to MongoDB
-//     await connect('mongodb://localhost:27017/electronchallenge');
-
-//     const task = new Task({
-//      taskName: "test task",
-//      taskDescription: "description task"
-//     });
-//     await task.save();
-//     console.log(task.taskName);
-//     }
-    
