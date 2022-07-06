@@ -57,12 +57,10 @@ export const AppBody: React.FC = () => {
 
 
         ipcRenderer.on('delete-task-sucess',async (e,args) => {
-            // console.log(taskList)
             const deletedTask = JSON.parse(args);
             const newTaskList =  taskList.filter(item =>{
                 return item._id !== deletedTask._id
             })
-            // console.log(newTaskList)
             setTaskList(newTaskList)
         })
 
