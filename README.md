@@ -19,5 +19,5 @@ yarn dev
 
 ## The Aplication
 
-Fill the form with the task you want to list, hit press, and the task will be saved.
-Press 'Delete' Button to delete a task you completed, and press Edit to edit a task.
+Fill the form with the task you want to list, press `Save`, and the task will be saved.
+Press `Delete` Button to delete a task you completed, and press `Edit` to edit a task.
