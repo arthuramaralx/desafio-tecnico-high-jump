@@ -1,5 +1,5 @@
-# electron-react-typescript
-Clone this repo to start a simple Electron app with React and Typescript.
+# Task Manager
+A simple task manager with Electron.js and MongoDB.
 
 ## Installation
 
@@ -17,14 +17,7 @@ Run the `dev` script to start the project. It will reload with code changes.
 yarn dev
 ```
 
-## Building
+## The Aplication
 
-Run the `build` script in order to generate the production build to the current OS: 
-
-```bash
-yarn build
-```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+Fill the form with the task you want to list, hit press, and the task will be saved.
+Press 'Delete' Button to delete a task you completed, and press Edit to edit a task.
