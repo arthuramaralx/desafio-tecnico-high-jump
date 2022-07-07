@@ -1,0 +1,21 @@
+.EditTaskPopUp {
+    background-color: rgba(0, 0, 0, 0.911);
+    position: absolute;
+    top: 30%;
+ right: 39%;
+    width: 300px;
+    height: 230px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-top: 30px;
+}
+.EditTaskPopUp form {
+    display: flex;
+    flex-direction: column;
+}
+.closeButton {
+    position: relative;
+    left: 44%;
+    border-radius: 30px;
+    bottom: 15%;
+}
