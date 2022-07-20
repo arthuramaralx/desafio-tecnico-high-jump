@@ -1,5 +1,5 @@
 # Task Manager
-A simple task manager with Electron.js and MongoDB.
+A simple task manager with React.js, TypeScript, Electron.js and MongoDB.
 
 ## Installation
 
